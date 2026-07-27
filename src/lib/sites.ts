@@ -6,6 +6,7 @@ export type SiteTemplate = {
   description: string;
   tags: string[];
   gradient: string;
+  domain: string;
 };
 
 export const siteTemplates: SiteTemplate[] = [
@@ -18,6 +19,7 @@ export const siteTemplates: SiteTemplate[] = [
       "Página única focada em conversão, com oferta, prova social e checkout integrado.",
     tags: ["Alta conversão", "CTA otimizado", "Mobile-first"],
     gradient: "from-fuchsia-500 to-orange-400",
+    domain: "sua-oferta.com.br",
   },
   {
     slug: "loja-virtual",
@@ -28,6 +30,7 @@ export const siteTemplates: SiteTemplate[] = [
       "E-commerce completo com catálogo, carrinho, pagamento e painel de pedidos.",
     tags: ["Pagamentos online", "Catálogo ilimitado", "Painel admin"],
     gradient: "from-emerald-500 to-teal-400",
+    domain: "camilaacessorios.com.br",
   },
   {
     slug: "site-institucional",
@@ -38,6 +41,7 @@ export const siteTemplates: SiteTemplate[] = [
       "Presença profissional multi-página: home, sobre, serviços e contato.",
     tags: ["Multi-página", "SEO pronto", "Formulário de contato"],
     gradient: "from-blue-500 to-indigo-400",
+    domain: "fsadvocacia.com.br",
   },
   {
     slug: "portfolio",
@@ -48,6 +52,7 @@ export const siteTemplates: SiteTemplate[] = [
       "Vitrine elegante para fotógrafos, designers e criadores mostrarem seu trabalho.",
     tags: ["Galeria visual", "Animações suaves", "Leve e rápido"],
     gradient: "from-violet-500 to-purple-400",
+    domain: "anaduarte.art",
   },
   {
     slug: "restaurante",
@@ -58,6 +63,7 @@ export const siteTemplates: SiteTemplate[] = [
       "Cardápio digital, reservas e localização para bares e restaurantes.",
     tags: ["Cardápio digital", "Reservas online", "Google Maps"],
     gradient: "from-amber-500 to-red-400",
+    domain: "saborecia.com.br",
   },
   {
     slug: "imobiliaria",
@@ -68,6 +74,7 @@ export const siteTemplates: SiteTemplate[] = [
       "Catálogo de imóveis com filtros de busca e formulário de agendamento de visita.",
     tags: ["Busca com filtros", "Fichas de imóveis", "Leads qualificados"],
     gradient: "from-sky-500 to-cyan-400",
+    domain: "horizonteimoveis.com.br",
   },
 ];
 

@@ -1,11 +1,8 @@
+import Link from "next/link";
+import { ViewTransition } from "react";
 import { siteTemplates } from "@/lib/sites";
+import { currency } from "@/lib/currency";
 import CheckoutButton from "@/components/CheckoutButton";
-
-const currency = new Intl.NumberFormat("pt-BR", {
-  style: "currency",
-  currency: "BRL",
-  maximumFractionDigits: 0,
-});
 
 export default function Catalog() {
   return (
@@ -25,7 +22,18 @@ export default function Catalog() {
               key={site.slug}
               className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition hover:border-white/20"
             >
-              <div className={`h-36 bg-gradient-to-br ${site.gradient}`} />
+              <Link
+                href={`/modelos/${site.slug}`}
+                transitionTypes={["nav-forward"]}
+                className="group/preview relative block h-36 overflow-hidden"
+              >
+                <ViewTransition name={`site-preview-${site.slug}`}>
+                  <div className={`h-36 bg-gradient-to-br ${site.gradient}`} />
+                </ViewTransition>
+                <span className="absolute inset-0 flex items-center justify-center gap-2 bg-neutral-950/0 text-sm font-semibold text-white opacity-0 transition group-hover/preview:bg-neutral-950/40 group-hover/preview:opacity-100">
+                  Ver modelo ↗
+                </span>
+              </Link>
               <div className="flex flex-1 flex-col gap-4 p-6">
                 <div>
                   <span className="text-xs font-medium uppercase tracking-wide text-fuchsia-400">

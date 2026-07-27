@@ -1,11 +1,6 @@
 import { plans } from "@/lib/sites";
+import { currency } from "@/lib/currency";
 import CheckoutButton from "@/components/CheckoutButton";
-
-const currency = new Intl.NumberFormat("pt-BR", {
-  style: "currency",
-  currency: "BRL",
-  maximumFractionDigits: 0,
-});
 
 export default function Pricing() {
   return (
