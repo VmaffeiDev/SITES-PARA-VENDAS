@@ -1,10 +1,15 @@
+const categories = ["Todos", "Casamentos", "Ensaios", "Corporativo"];
+
 const gallery = [
-  "bg-violet-200",
-  "bg-purple-200",
-  "bg-fuchsia-200",
-  "bg-violet-300",
-  "bg-purple-300",
-  "bg-fuchsia-300",
+  { color: "bg-violet-200", category: "Casamentos" },
+  { color: "bg-purple-200", category: "Ensaios" },
+  { color: "bg-fuchsia-200", category: "Corporativo" },
+  { color: "bg-violet-300", category: "Casamentos" },
+  { color: "bg-purple-300", category: "Ensaios" },
+  { color: "bg-fuchsia-300", category: "Corporativo" },
+  { color: "bg-violet-100", category: "Casamentos" },
+  { color: "bg-purple-100", category: "Ensaios" },
+  { color: "bg-fuchsia-100", category: "Corporativo" },
 ];
 
 export default function PortfolioPreview() {
@@ -28,9 +33,28 @@ export default function PortfolioPreview() {
         </h1>
       </section>
 
+      <section className="flex flex-wrap justify-center gap-2 px-8 pb-8">
+        {categories.map((category, index) => (
+          <span
+            key={category}
+            className={`rounded-full px-4 py-1.5 text-xs font-medium ${
+              index === 0
+                ? "bg-violet-600 text-white"
+                : "border border-neutral-200 text-neutral-600"
+            }`}
+          >
+            {category}
+          </span>
+        ))}
+      </section>
+
       <section className="grid grid-cols-3 gap-2 px-4 pb-4">
-        {gallery.map((color, index) => (
-          <div key={index} className={`aspect-square ${color}`} />
+        {gallery.map((photo, index) => (
+          <div key={index} className={`group relative aspect-square ${photo.color}`}>
+            <span className="absolute bottom-1 left-1 rounded bg-black/40 px-1.5 py-0.5 text-[9px] font-medium text-white opacity-0 transition group-hover:opacity-100">
+              {photo.category}
+            </span>
+          </div>
         ))}
       </section>
 

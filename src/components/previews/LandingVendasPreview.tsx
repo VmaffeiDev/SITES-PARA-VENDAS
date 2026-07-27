@@ -1,3 +1,17 @@
+const included = [
+  "Plano alimentar simples de seguir",
+  "Treinos de 20 minutos, sem academia",
+  "Suporte direto no grupo exclusivo",
+  "Receitas rápidas para o dia a dia",
+  "Acompanhamento semanal de progresso",
+];
+
+const testimonials = [
+  { name: "Marina T.", quote: "Perdi 6kg em 30 dias sem passar fome. Mudou minha rotina.", rating: 5 },
+  { name: "Juliana R.", quote: "O suporte no grupo faz toda diferença nos dias difíceis.", rating: 5 },
+  { name: "Patrícia A.", quote: "Treinos rápidos que cabem mesmo num dia corrido.", rating: 4 },
+];
+
 export default function LandingVendasPreview() {
   return (
     <div className="font-sans text-neutral-900">
@@ -36,6 +50,31 @@ export default function LandingVendasPreview() {
             <p className="mt-3 font-semibold">{item.title}</p>
           </div>
         ))}
+      </section>
+
+      <section className="bg-fuchsia-50/60 px-8 py-14">
+        <h2 className="text-center text-xl font-bold">O que está incluso</h2>
+        <ul className="mx-auto mt-6 max-w-md space-y-3">
+          {included.map((item) => (
+            <li key={item} className="flex items-start gap-2 text-sm text-neutral-700">
+              <span className="mt-0.5 text-fuchsia-600">✓</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="px-8 py-14">
+        <h2 className="text-center text-xl font-bold">Quem já fez, recomenda</h2>
+        <div className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-5">
+          {testimonials.map((testimonial) => (
+            <div key={testimonial.name} className="rounded-xl border border-neutral-100 p-5 shadow-sm">
+              <span className="text-amber-500 text-xs">{"★".repeat(testimonial.rating)}</span>
+              <p className="mt-2 text-sm text-neutral-600">“{testimonial.quote}”</p>
+              <p className="mt-3 text-xs font-semibold text-neutral-500">{testimonial.name}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="bg-neutral-900 px-8 py-14 text-center text-white">

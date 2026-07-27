@@ -1,7 +1,27 @@
-const dishes = [
-  { name: "Risoto de Funghi", price: "R$ 68", desc: "Arbóreo cremoso com cogumelos frescos." },
-  { name: "Salmão Grelhado", price: "R$ 79", desc: "Com legumes salteados e molho de ervas." },
-  { name: "Tagliatelle ao Sugo", price: "R$ 54", desc: "Massa fresca artesanal com molho da casa." },
+const menu = [
+  {
+    category: "Entradas",
+    items: [
+      { name: "Bruschetta Trio", price: "R$ 32", desc: "Tomate confit, alho-poró e queijo de cabra." },
+      { name: "Carpaccio de Filé", price: "R$ 45", desc: "Lâminas finas com alcaparras e parmesão." },
+    ],
+  },
+  {
+    category: "Principais",
+    items: [
+      { name: "Risoto de Funghi", price: "R$ 68", desc: "Arbóreo cremoso com cogumelos frescos.", badge: "Mais pedido" },
+      { name: "Salmão Grelhado", price: "R$ 79", desc: "Com legumes salteados e molho de ervas." },
+      { name: "Tagliatelle ao Sugo", price: "R$ 54", desc: "Massa fresca artesanal com molho da casa." },
+      { name: "Risoto de Camarão", price: "R$ 84", desc: "Camarões grelhados com toque de limão siciliano." },
+    ],
+  },
+  {
+    category: "Sobremesas",
+    items: [
+      { name: "Tiramisù", price: "R$ 28", desc: "Receita tradicional italiana da casa." },
+      { name: "Petit Gâteau", price: "R$ 30", desc: "Com sorvete de creme e calda de chocolate." },
+    ],
+  },
 ];
 
 export default function RestaurantePreview() {
@@ -23,22 +43,34 @@ export default function RestaurantePreview() {
       </section>
 
       <section className="px-8 py-14">
-        <h2 className="text-center text-xl font-bold text-amber-800">Destaques do cardápio</h2>
-        <div className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-5">
-          {dishes.map((dish) => (
-            <div key={dish.name} className="rounded-xl border border-neutral-100 p-5 shadow-sm">
-              <div className="flex items-center justify-between">
-                <p className="font-semibold">{dish.name}</p>
-                <span className="text-amber-700 font-bold">{dish.price}</span>
-              </div>
-              <p className="mt-2 text-sm text-neutral-500">{dish.desc}</p>
+        <h2 className="text-center text-xl font-bold text-amber-800">Nosso cardápio</h2>
+        {menu.map((group) => (
+          <div key={group.category} className="mt-10">
+            <h3 className="border-b border-amber-100 pb-2 text-sm font-semibold uppercase tracking-widest text-amber-600">
+              {group.category}
+            </h3>
+            <div className="mt-5 grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-5">
+              {group.items.map((dish) => (
+                <div key={dish.name} className="rounded-xl border border-neutral-100 p-5 shadow-sm">
+                  <div className="flex items-start justify-between gap-2">
+                    <p className="font-semibold">{dish.name}</p>
+                    <span className="whitespace-nowrap text-amber-700 font-bold">{dish.price}</span>
+                  </div>
+                  {"badge" in dish && dish.badge && (
+                    <span className="mt-1 inline-block rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold text-amber-700">
+                      {dish.badge}
+                    </span>
+                  )}
+                  <p className="mt-2 text-sm text-neutral-500">{dish.desc}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </section>
 
       <footer className="bg-neutral-50 px-8 py-8 text-center text-xs text-neutral-500">
-        Aberto de terça a domingo, 18h às 23h · © Sabor & Cia — conteúdo de demonstração
+        Aberto de terça a domingo, 18h às 23h · Rua das Flores, 120 · © Sabor & Cia — conteúdo de demonstração
       </footer>
     </div>
   );

@@ -2,6 +2,19 @@ const areas = [
   { title: "Direito Trabalhista", desc: "Defesa de direitos e acordos trabalhistas." },
   { title: "Direito de Família", desc: "Divórcios, pensão e guarda com cuidado humano." },
   { title: "Direito Empresarial", desc: "Contratos e consultoria jurídica para empresas." },
+  { title: "Direito Imobiliário", desc: "Contratos de compra, venda e locação de imóveis." },
+];
+
+const stats = [
+  { value: "15+", label: "anos de atuação" },
+  { value: "800+", label: "casos atendidos" },
+  { value: "98%", label: "clientes satisfeitos" },
+];
+
+const team = [
+  { name: "Dra. Fernanda Souza", role: "Sócia fundadora · Trabalhista" },
+  { name: "Dr. Rafael Lima", role: "Sócio · Empresarial" },
+  { name: "Dra. Beatriz Nunes", role: "Advogada · Família" },
 ];
 
 export default function InstitucionalPreview() {
@@ -11,7 +24,7 @@ export default function InstitucionalPreview() {
         <span className="text-lg font-bold text-blue-900">FS Advocacia</span>
         <nav className="flex gap-4 text-xs text-neutral-500">
           <span>Áreas de atuação</span>
-          <span>Sobre</span>
+          <span>Equipe</span>
           <span>Contato</span>
         </nav>
       </header>
@@ -26,6 +39,14 @@ export default function InstitucionalPreview() {
         <span className="mt-6 inline-block rounded-md bg-white px-6 py-3 text-sm font-semibold text-blue-900">
           Agendar consulta
         </span>
+        <div className="mt-10 grid max-w-md grid-cols-3 gap-4 border-t border-white/20 pt-6">
+          {stats.map((stat) => (
+            <div key={stat.label}>
+              <p className="text-2xl font-extrabold">{stat.value}</p>
+              <p className="text-xs text-blue-200">{stat.label}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-6 px-8 py-14">
@@ -37,11 +58,17 @@ export default function InstitucionalPreview() {
         ))}
       </section>
 
-      <section className="bg-neutral-50 px-8 py-12">
-        <h2 className="text-xl font-bold text-blue-900">Sobre o escritório</h2>
-        <p className="mt-3 max-w-2xl text-sm text-neutral-600">
-          Mais de 15 anos de experiência atendendo clientes com transparência e dedicação em cada caso.
-        </p>
+      <section className="bg-neutral-50 px-8 py-14">
+        <h2 className="text-center text-xl font-bold text-blue-900">Nossa equipe</h2>
+        <div className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-6">
+          {team.map((member) => (
+            <div key={member.name} className="text-center">
+              <div className="mx-auto h-16 w-16 rounded-full bg-blue-100" />
+              <p className="mt-3 font-semibold text-blue-900">{member.name}</p>
+              <p className="text-xs text-neutral-500">{member.role}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       <footer className="px-8 py-8 text-center text-xs text-neutral-400">
