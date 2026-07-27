@@ -1,4 +1,5 @@
 import { siteTemplates } from "@/lib/sites";
+import CheckoutButton from "@/components/CheckoutButton";
 
 const currency = new Intl.NumberFormat("pt-BR", {
   style: "currency",
@@ -47,12 +48,11 @@ export default function Catalog() {
                   <span className="text-lg font-bold text-white">
                     {currency.format(site.price)}
                   </span>
-                  <a
-                    href="#planos"
-                    className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-neutral-950 transition group-hover:bg-fuchsia-400 group-hover:text-white"
-                  >
-                    Quero este
-                  </a>
+                  <CheckoutButton
+                    itemId={`site:${site.slug}`}
+                    label="Quero este"
+                    className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-neutral-950 transition group-hover:bg-fuchsia-400 group-hover:text-white disabled:cursor-not-allowed disabled:opacity-70"
+                  />
                 </div>
               </div>
             </article>

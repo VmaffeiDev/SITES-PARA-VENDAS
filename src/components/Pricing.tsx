@@ -1,4 +1,5 @@
 import { plans } from "@/lib/sites";
+import CheckoutButton from "@/components/CheckoutButton";
 
 const currency = new Intl.NumberFormat("pt-BR", {
   style: "currency",
@@ -46,16 +47,17 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="#faq"
-                className={`mt-8 rounded-full px-6 py-3 text-center text-sm font-semibold transition ${
+              <CheckoutButton
+                itemId={`plan:${plan.name.toLowerCase()}`}
+                label={`Escolher ${plan.name}`}
+                wrapperClassName="mt-8 flex flex-col items-stretch gap-2"
+                messageClassName="text-center text-xs text-red-400"
+                className={`w-full rounded-full px-6 py-3 text-center text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-70 ${
                   plan.highlighted
                     ? "bg-fuchsia-500 text-white hover:bg-fuchsia-400"
                     : "border border-white/15 text-white hover:bg-white/10"
                 }`}
-              >
-                Escolher {plan.name}
-              </a>
+              />
             </div>
           ))}
         </div>
