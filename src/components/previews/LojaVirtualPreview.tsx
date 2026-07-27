@@ -1,5 +1,12 @@
 const categories = ["Todos", "Colares", "Brincos", "Pulseiras", "Anéis"];
 
+const categoryIcons: Record<string, string> = {
+  Colares: "📿",
+  Brincos: "✨",
+  Pulseiras: "⭕",
+  Anéis: "💍",
+};
+
 const products = [
   { name: "Colar Aurora", price: "R$ 89", category: "Colares", color: "bg-rose-100", badge: "Mais vendido", rating: 5 },
   { name: "Brinco Luna", price: "R$ 59", category: "Brincos", color: "bg-amber-100", rating: 4 },
@@ -63,7 +70,8 @@ export default function LojaVirtualPreview() {
       <section className="grid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] gap-5 px-8 py-8">
         {products.map((product) => (
           <div key={product.name} className="overflow-hidden rounded-xl border border-neutral-100 shadow-sm">
-            <div className={`relative h-28 ${product.color}`}>
+            <div className={`relative flex h-28 items-center justify-center ${product.color}`}>
+              <span className="text-4xl opacity-70">{categoryIcons[product.category]}</span>
               {product.badge && (
                 <span className="absolute left-2 top-2 rounded-full bg-neutral-900/80 px-2 py-0.5 text-[10px] font-semibold text-white">
                   {product.badge}

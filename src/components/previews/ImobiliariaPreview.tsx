@@ -1,5 +1,11 @@
 const filters = ["Todos", "Apartamento", "Casa", "Studio"];
 
+const typeIcons: Record<string, string> = {
+  Apartamento: "🏢",
+  Casa: "🏠",
+  Studio: "🏙️",
+};
+
 const listings = [
   { title: "Apto 2 quartos — Centro", price: "R$ 320.000", specs: "62m² · 2 quartos · 1 vaga", type: "Apartamento", color: "bg-sky-100", badge: "Destaque" },
   { title: "Casa em condomínio", price: "R$ 590.000", specs: "140m² · 3 quartos · 2 vagas", type: "Casa", color: "bg-cyan-100" },
@@ -51,7 +57,8 @@ export default function ImobiliariaPreview() {
       <section className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-5 px-8 py-8">
         {listings.map((listing) => (
           <div key={listing.title} className="overflow-hidden rounded-xl border border-neutral-100 shadow-sm">
-            <div className={`relative h-28 ${listing.color}`}>
+            <div className={`relative flex h-28 items-center justify-center ${listing.color}`}>
+              <span className="text-4xl opacity-70">{typeIcons[listing.type]}</span>
               {listing.badge && (
                 <span className="absolute left-2 top-2 rounded-full bg-sky-900/80 px-2 py-0.5 text-[10px] font-semibold text-white">
                   {listing.badge}

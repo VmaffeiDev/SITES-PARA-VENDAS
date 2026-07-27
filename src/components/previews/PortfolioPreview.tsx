@@ -1,5 +1,11 @@
 const categories = ["Todos", "Casamentos", "Ensaios", "Corporativo"];
 
+const categoryIcons: Record<string, string> = {
+  Casamentos: "💍",
+  Ensaios: "📷",
+  Corporativo: "💼",
+};
+
 const gallery = [
   { color: "bg-violet-200", category: "Casamentos" },
   { color: "bg-purple-200", category: "Ensaios" },
@@ -50,7 +56,8 @@ export default function PortfolioPreview() {
 
       <section className="grid grid-cols-3 gap-2 px-4 pb-4">
         {gallery.map((photo, index) => (
-          <div key={index} className={`group relative aspect-square ${photo.color}`}>
+          <div key={index} className={`group relative flex aspect-square items-center justify-center ${photo.color}`}>
+            <span className="text-3xl opacity-50">{categoryIcons[photo.category]}</span>
             <span className="absolute bottom-1 left-1 rounded bg-black/40 px-1.5 py-0.5 text-[9px] font-medium text-white opacity-0 transition group-hover:opacity-100">
               {photo.category}
             </span>

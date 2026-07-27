@@ -2,6 +2,8 @@ import Link from "next/link";
 import { ViewTransition } from "react";
 import { siteTemplates } from "@/lib/sites";
 import { currency } from "@/lib/currency";
+import { previewsBySlug } from "@/components/previews";
+import CardPreview from "@/components/previews/CardPreview";
 import CheckoutButton from "@/components/CheckoutButton";
 
 export default function Catalog() {
@@ -25,13 +27,16 @@ export default function Catalog() {
               <Link
                 href={`/modelos/${site.slug}`}
                 transitionTypes={["nav-forward"]}
-                className="group/preview relative block h-36 overflow-hidden"
+                className="group/preview relative block h-56 overflow-hidden"
               >
+                <div className={`h-1 bg-gradient-to-r ${site.gradient}`} />
                 <ViewTransition name={`site-preview-${site.slug}`}>
-                  <div className={`h-36 bg-gradient-to-br ${site.gradient}`} />
+                  <div className="h-[calc(100%-0.25rem)]">
+                    <CardPreview Preview={previewsBySlug[site.slug]} domain={site.domain} />
+                  </div>
                 </ViewTransition>
-                <span className="absolute inset-0 flex items-center justify-center gap-2 bg-neutral-950/0 text-sm font-semibold text-white opacity-0 transition group-hover/preview:bg-neutral-950/40 group-hover/preview:opacity-100">
-                  Ver modelo ↗
+                <span className="absolute inset-0 flex items-center justify-center gap-2 bg-neutral-950/0 text-sm font-semibold text-white opacity-0 transition group-hover/preview:bg-neutral-950/60 group-hover/preview:opacity-100 group-hover/preview:backdrop-blur-[1px]">
+                  Ver modelo completo ↗
                 </span>
               </Link>
               <div className="flex flex-1 flex-col gap-4 p-6">

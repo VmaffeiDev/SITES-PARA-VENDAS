@@ -12,9 +12,9 @@ const stats = [
 ];
 
 const team = [
-  { name: "Dra. Fernanda Souza", role: "Sócia fundadora · Trabalhista" },
-  { name: "Dr. Rafael Lima", role: "Sócio · Empresarial" },
-  { name: "Dra. Beatriz Nunes", role: "Advogada · Família" },
+  { name: "Dra. Fernanda Souza", role: "Sócia fundadora · Trabalhista", initials: "FS" },
+  { name: "Dr. Rafael Lima", role: "Sócio · Empresarial", initials: "RL" },
+  { name: "Dra. Beatriz Nunes", role: "Advogada · Família", initials: "BN" },
 ];
 
 export default function InstitucionalPreview() {
@@ -63,7 +63,9 @@ export default function InstitucionalPreview() {
         <div className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-6">
           {team.map((member) => (
             <div key={member.name} className="text-center">
-              <div className="mx-auto h-16 w-16 rounded-full bg-blue-100" />
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-lg font-bold text-blue-700">
+                {member.initials}
+              </div>
               <p className="mt-3 font-semibold text-blue-900">{member.name}</p>
               <p className="text-xs text-neutral-500">{member.role}</p>
             </div>
